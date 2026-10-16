@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 40% 99%;
+    --foreground: 145 25% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 145 25% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 145 25% 12%;
+    --primary: 150 55% 30%;
+    --primary-foreground: 40 40% 99%;
+    --secondary: 40 30% 94%;
+    --secondary-foreground: 145 25% 18%;
+    --muted: 40 20% 95%;
+    --muted-foreground: 145 10% 40%;
+    --accent: 38 85% 52%;
+    --accent-foreground: 145 30% 12%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 40 18% 88%;
+    --input: 40 18% 88%;
+    --ring: 150 55% 30%;
+    --chart-1: 150 55% 35%;
+    --chart-2: 30 60% 45%;
+    --chart-3: 38 85% 55%;
+    --chart-4: 145 30% 55%;
+    --chart-5: 25 50% 40%;
+    --radius: 0.9rem;
+    --font-heading: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Fraunces', 'Plus Jakarta Sans', ui-serif, Georgia, serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --brand-green: 150 55% 30%;
+    --brand-green-light: 150 45% 92%;
+    --brand-earth: 25 50% 38%;
+    --brand-gold: 38 85% 52%;
+  }
+
+  .dark {
+    --background: 150 25% 8%;
+    --foreground: 40 30% 96%;
+    --card: 150 22% 11%;
+    --card-foreground: 40 30% 96%;
+    --popover: 150 22% 11%;
+    --popover-foreground: 40 30% 96%;
+    --primary: 150 50% 45%;
+    --primary-foreground: 150 25% 8%;
+    --secondary: 150 18% 18%;
+    --secondary-foreground: 40 30% 96%;
+    --muted: 150 15% 18%;
+    --muted-foreground: 40 10% 65%;
+    --accent: 38 80% 55%;
+    --accent-foreground: 150 25% 8%;
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 150 15% 22%;
+    --input: 150 15% 22%;
+    --ring: 150 50% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+  .text-balance { text-wrap: balance; }
+  .bg-grain {
+    background-image: radial-gradient(circle at 1px 1px, rgba(110,68,33,0.06) 1px, transparent 0);
+    background-size: 22px 22px;
+  }
+  .glass {
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+  .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+/* Leaflet adjustments */
+.leaflet-container { font-family: var(--font-body); border-radius: 1rem; }
+.leaflet-popup-content-wrapper { border-radius: 0.9rem; box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+.leaflet-bar a { border-radius: 0.5rem !important; }
+
+/* ===== Raizinho 3D (mascote animado) ===== */
+@keyframes rz-float   { 0%,100%{ transform: translateY(0) rotate(0deg) } 50%{ transform: translateY(-7px) rotate(.5deg) } }
+@keyframes rz-breathe { 0%,100%{ transform: scaleY(1) scaleX(1) } 50%{ transform: scaleY(1.03) scaleX(.99) } }
+@keyframes rz-jump    { 0%,100%{ transform: translateY(0) scaleY(1) } 25%{ transform: translateY(-26px) scaleY(1.05) } 50%{ transform: translateY(0) scaleY(.92) } 70%{ transform: translateY(-10px) } }
+@keyframes rz-spin    { 0%{ transform: rotate(0) } 100%{ transform: rotate(360deg) } }
+@keyframes rz-shake   { 0%,100%{ transform: rotate(0) } 20%{ transform: rotate(-7deg) } 40%{ transform: rotate(7deg) } 60%{ transform: rotate(-5deg) } 80%{ transform: rotate(5deg) } }
+@keyframes rz-sway    { 0%,100%{ transform: rotate(0) } 25%{ transform: rotate(6deg) } 75%{ transform: rotate(-6deg) } }
+@keyframes rz-pop     { 0%{ transform: scale(.7); opacity:.4 } 60%{ transform: scale(1.06) } 100%{ transform: scale(1) } }
+@keyframes rz-bow     { 0%,100%{ transform: rotate(0) translateY(0) } 50%{ transform: rotate(0) translateY(6px) scaleY(.96) } }
+@keyframes rz-crouch  { 0%,100%{ transform: scaleY(1) } 50%{ transform: scaleY(.9) translateY(4px) } }
+@keyframes rz-dance   { 0%,100%{ transform: rotate(-5deg) translateY(0) } 25%{ transform: rotate(5deg) translateY(-6px) } 50%{ transform: rotate(-5deg) translateY(0) } 75%{ transform: rotate(5deg) translateY(-6px) } }
+@keyframes rz-turbo   { 0%{ transform: scale(1) rotate(0) } 20%{ transform: scale(.9) translateY(-8px) } 40%{ transform: rotate(180deg) scale(1.08) } 70%{ transform: rotate(360deg) translateY(-12px) } 100%{ transform: rotate(360deg) } }
+@keyframes rz-tilt    { 0%,100%{ transform: rotate(0) } 50%{ transform: rotate(-10deg) } }
+@keyframes rz-look    { 0%,100%{ transform: translateX(0) } 30%{ transform: translateX(-4px) } 60%{ transform: translateX(4px) } }
+@keyframes rz-bubble  { 0%{ transform: scale(.6) translateY(6px); opacity:0 } 60%{ transform: scale(1.05); opacity:1 } 100%{ transform: scale(1); opacity:1 } }
+@keyframes rz-shadow  { 0%,100%{ transform: scaleX(1); opacity:.18 } 50%{ transform: scaleX(.85); opacity:.12 } }
+
+.rz-float  { animation: rz-float 3.4s ease-in-out infinite }
+.rz-breathe{ animation: rz-breathe 3.8s ease-in-out infinite }
+.rz-jump   { animation: rz-jump .65s ease-in-out }
+.rz-spin   { animation: rz-spin .75s ease-in-out }
+.rz-shake  { animation: rz-shake .5s ease-in-out }
+.rz-sway   { animation: rz-sway .8s ease-in-out }
+.rz-pop    { animation: rz-pop .35s ease-out }
+.rz-bow    { animation: rz-bow .7s ease-in-out }
+.rz-crouch { animation: rz-crouch .7s ease-in-out }
+.rz-dance  { animation: rz-dance 1s ease-in-out }
+.rz-turbo  { animation: rz-turbo 1.6s ease-in-out }
+.rz-tilt   { animation: rz-tilt 1.1s ease-in-out infinite }
+.rz-look   { animation: rz-look 2.2s ease-in-out }
+.rz-pop-bubble { animation: rz-bubble .35s ease-out }
+.rz-shadow { animation: rz-shadow 3.4s ease-in-out infinite }
+
+@media (prefers-reduced-motion: reduce) {
+  .rz-float,.rz-breathe,.rz-jump,.rz-spin,.rz-shake,.rz-sway,.rz-pop,.rz-bow,.rz-crouch,.rz-dance,.rz-turbo,.rz-tilt,.rz-look,.rz-pop-bubble,.rz-shadow { animation: none !important }
+}
